@@ -1,11 +1,5 @@
-# Use an official OpenJDK runtime as a parent image
-FROM openjdk:17-jdk-slim
-
-# Set the working directory in the container
+FROM eclipse-temurin:17-jdk-alpine
 WORKDIR /app
-
-# Copy the packaged jar file into the container
-COPY target/*.jar app.jar
-
-# Run the jar file
-CMD ["java", "-jar", "app.jar"]
+COPY target\NassauPro-1.0.0.jar deploy-nassau-pro-1.0.0.jar
+EXPOSE 8080
+CMD ["java", "-jar", "deploy-nassau-pro-1.0.0.jar"]
