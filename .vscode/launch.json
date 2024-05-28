@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-NassauProApplication<NassauPro>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.nassaupro.crud.NassauProApplication",
+            "projectName": "NassauPro",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
