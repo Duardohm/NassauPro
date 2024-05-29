@@ -26,11 +26,10 @@ jobs:
               run: docker push duardohm/deploy-nassau-pro
 
     deploy:
-      needs: build
-      runs-on: self-hosted
-      steps:
-      - name: Pull image from docker hub
-        run: docker pull duardohm/deploy-nassau-pro
-      - name: Run docker container
-        run: docker run -d -p 8080:8080 --name deploy-nassau-pro:latest
-        
+        needs: build
+        runs-on: self-hosted
+        steps:
+            - name: Pull image from docker hub
+              run: docker pull duardohm/deploy-nassau-pro
+            - name: Run docker container
+              run: docker run -d -p 8080:8080 --name deploy-nassau-pro duardohm/deploy-nassau-pro
