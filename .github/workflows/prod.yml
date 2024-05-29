@@ -2,7 +2,7 @@ name: Deploy Application NassauPro
 
 on:
     push:
-        branches: [main]
+        branches: [main, production]
 
 jobs:
     build:
