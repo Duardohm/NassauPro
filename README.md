@@ -21,4 +21,4 @@
 -   lombok
 -   springdoc-openapi-starter-webmvc-ui
 -   springdoc-openapi-starter-webmvc-api
--   Atualizado 27/05/2024
+-   Atualizado 01/06/2024
