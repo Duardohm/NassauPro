@@ -17,7 +17,7 @@
 # Testes de API
 
 -   O projeto tem configurado o Swagger para a realização de testes
--   http://localhost:8080/swagger-ui/index.html
+-   http://18.230.23.174:8080/swagger-ui/index.html
 
 # Dependências
 
