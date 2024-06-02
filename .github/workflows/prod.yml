@@ -31,7 +31,7 @@ jobs:
         steps:
             - name: Pull image from docker hub
               run: docker pull duardohm/deploy-nassau-pro:latest
-            # - name: Remove docker container
-            #   run: docker rm -f deploy-nassau-pro
+            - name: Remove docker container
+              run: docker rm -f deploy-nassau-pro
             # - name: Run docker container
             #   run: docker run -d -p 8080:8080 -e DATABASE_USERNAME=${{secrets.DATABASE_USERNAME}} -e DATABASE_PASSWORD='${{secrets.DATABASE_PASSWORD}}' -e DATABASE_URL=${{secrets.DATABASE_URL}} --name deploy-nassau-pro duardohm/deploy-nassau-pro:latest
