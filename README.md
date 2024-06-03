@@ -34,3 +34,5 @@
 -   springdoc-openapi-starter-webmvc-ui
 -   springdoc-openapi-starter-webmvc-api
 -   Atualizado 03/06/2024
+
+-   Teste deploy
