@@ -43,8 +43,8 @@ public class Client {
 	@NotBlank(message = "O nome não pode estar nulo ou em branco")
 	@Length(min = 3, max = 40, message = "O Nome deve conter entre {min} e {max} caracteres")
 	@Pattern(regexp = "^[a-zA-ZúÚíÍóÓýÝéÉáÁçÇãÃõÕôÔêÊûÛ\\s]+$", message = "O nome só deve conter letras")
-	private String firstName;
-	
+	private String fulanoHumberto;
+
 	@Schema(name = "lastName", example = "Meloso")
 	@Column(name = "L_NAME", columnDefinition = "VARCHAR(40)", nullable = false)
 	@NotBlank(message = "O nome não pode estar nulo ou em branco")
@@ -57,19 +57,18 @@ public class Client {
 	@NotBlank(message = "O Email não pode estar nulo ou em branco")
 	@Column(name = "EMAIL", nullable = false)
 	private String email;
-	
+
 	@Schema(name = "password", example = "Melo123456")
 	@Length(min = 6, message = "A senha deve conter no mínimo {min} caracteres")
 	@Column(name = "PASSWORD", nullable = false)
 	private String password;
-	
+
 	@Schema(name = "cpf", example = "69475441069")
 	@CPF(message = "O CPF informado não é válido")
 	@Column(name = "CPF", columnDefinition = "VARCHAR(11)", unique = true)
 	@Pattern(regexp = "^[0-9]+$", message = "O CPF deve ser composto apenas por números, sem pontos ou espaços em branco")
 	private String cpf;
 
-	
 	@Schema(name = "phoneNumber", example = "81912345678")
 	@NotBlank(message = "O celular não pode estar nulo ou em branco")
 	@Column(name = "PHONE_NUMBER", nullable = false)
@@ -77,16 +76,14 @@ public class Client {
 	@Length(min = 11, max = 11, message = "O celular deve conter 11 números")
 	private String phoneNumber;
 
-
 	public enum UserType {
 		STUDENT_PROVIDER, // Aluno prestador de serviços
 		CLIENT // Cliente
 	}
-	
+
 	@Schema(name = "userType", example = "CLIENT")
 	@Enumerated(EnumType.STRING)
 	@Column(name = "USER_TYPE", nullable = false)
 	private UserType userType;
-	
-	
+
 }

@@ -211,8 +211,8 @@ public class ClientController {
 		// Falta Jogar pra ClientException **
 
 		// Validações e tratamento de erros
-		if (updatedClient.getFirstName() != null) {
-			client.setFirstName(updatedClient.getFirstName());
+		if (updatedClient.getFulanoHumberto() != null) {
+			client.setFulanoHumberto(updatedClient.getFulanoHumberto());
 		}
 
 		if (updatedClient.getLastName() != null) {
