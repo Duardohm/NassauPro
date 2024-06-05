@@ -36,6 +36,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
+@CrossOrigin(origins = "*")
 @RestController
 @Tag(name = "Client Controller", description = "Mapeamento dos endpoints dos clientes")
 @RequestMapping("/clients")
@@ -84,7 +85,10 @@ public class ClientController {
 		} catch (ClientException e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage()); // 400 Bad Request
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Ocorreu um erro ao criar o cliente"); // 500 Internal Server Error
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Ocorreu um erro ao criar o cliente"); // 500
+																														// Internal
+																														// Server
+																														// Error
 		}
 	}
 	// -------------------------------------------------------------------------------
@@ -122,14 +126,15 @@ public class ClientController {
 	// -------------------------------------------------------------------------------
 
 	// Endpoint para obter um cliente pelo ID
-	@Operation(summary = "Listar o cliente por ID", description = "Retorna um cliente específico com nome, sobrenome e email.", tags = { "Get" })
+	@Operation(summary = "Listar o cliente por ID", description = "Retorna um cliente específico com nome, sobrenome e email.", tags = {
+			"Get" })
 	@ApiResponses({
-		@ApiResponse(responseCode = "200", content = {
-				@Content(schema = @Schema(implementation = ClientListDTO.class), mediaType = "application/json") }),
-		@ApiResponse(responseCode = "404", description = "Cliente não encontrado com o ID: {id}", content = {
-				@Content(schema = @Schema()) }),
-		@ApiResponse(responseCode = "500", description = "Ocorreu um erro ao buscar o cliente pelo ID", content = {
-				@Content(schema = @Schema()) }) })
+			@ApiResponse(responseCode = "200", content = {
+					@Content(schema = @Schema(implementation = ClientListDTO.class), mediaType = "application/json") }),
+			@ApiResponse(responseCode = "404", description = "Cliente não encontrado com o ID: {id}", content = {
+					@Content(schema = @Schema()) }),
+			@ApiResponse(responseCode = "500", description = "Ocorreu um erro ao buscar o cliente pelo ID", content = {
+					@Content(schema = @Schema()) }) })
 	@Parameter(name = "id", description = "ID do usuário a ser listado", required = true, example = "1")
 	@CrossOrigin(origins = "*")
 	@GetMapping("/list/{id}")
@@ -157,22 +162,23 @@ public class ClientController {
 	// -------------------------------------------------------------------------------
 
 	// Endpoint para atualizar um cliente existente
-	@Operation(summary = "Atualizar um cliente por ID", description = "Atualizar cliente por ID informado.", tags = { "Put" })
+	@Operation(summary = "Atualizar um cliente por ID", description = "Atualizar cliente por ID informado.", tags = {
+			"Put" })
 	@Parameters({
-		@Parameter(name = "firstname", description = "Primeiro nome do usuário", required = true, example = "Melo2"),
-		@Parameter(name = "lastname", description = "Sobrenome nome do usuário", required = true, example = "Meloso2"),
-		@Parameter(name = "email", description = "Email do usuário", required = true, example = "Melo.meloso2@gmail.com"),
-		@Parameter(name = "password", description = "Senha do usuário", required = true, example = "Melo123456"),
-		@Parameter(name = "cpf", description = "CPF do usuário", required = false, example = "69475441069"),
-		@Parameter(name = "phoneNumber", description = "Número de celular do usuário", required = true, example = "81912345678"),
-		@Parameter(name = "userType", description = "Tipo do usuário", required = true, example = "CLIENT"), })
+			@Parameter(name = "firstname", description = "Primeiro nome do usuário", required = true, example = "Melo2"),
+			@Parameter(name = "lastname", description = "Sobrenome nome do usuário", required = true, example = "Meloso2"),
+			@Parameter(name = "email", description = "Email do usuário", required = true, example = "Melo.meloso2@gmail.com"),
+			@Parameter(name = "password", description = "Senha do usuário", required = true, example = "Melo123456"),
+			@Parameter(name = "cpf", description = "CPF do usuário", required = false, example = "69475441069"),
+			@Parameter(name = "phoneNumber", description = "Número de celular do usuário", required = true, example = "81912345678"),
+			@Parameter(name = "userType", description = "Tipo do usuário", required = true, example = "CLIENT"), })
 	@ApiResponses({
-		@ApiResponse(responseCode = "200", content = {
-				@Content(schema = @Schema(implementation = ClientListDTO.class), mediaType = "application/json") }),
-		@ApiResponse(responseCode = "404", description = "Cliente não encontrado com o ID: {id}", content = {
-				@Content(schema = @Schema()) }),
-		@ApiResponse(responseCode = "500", description = "Ocorreu um erro ao buscar o cliente pelo ID", content = {
-				@Content(schema = @Schema()) }) })
+			@ApiResponse(responseCode = "200", content = {
+					@Content(schema = @Schema(implementation = ClientListDTO.class), mediaType = "application/json") }),
+			@ApiResponse(responseCode = "404", description = "Cliente não encontrado com o ID: {id}", content = {
+					@Content(schema = @Schema()) }),
+			@ApiResponse(responseCode = "500", description = "Ocorreu um erro ao buscar o cliente pelo ID", content = {
+					@Content(schema = @Schema()) }) })
 	@CrossOrigin(origins = "*")
 	@PutMapping("/change/{id}")
 	public ResponseEntity<?> updateClient(@PathVariable Long id, @Valid @RequestBody Client updatedClient,
@@ -192,7 +198,12 @@ public class ClientController {
 
 		// Verificando se o cliente existe
 		if (optionalClient.isEmpty()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente não encontrado com o ID: " + id); // Cliente não encontrado - 404 Not Found
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente não encontrado com o ID: " + id); // Cliente
+																												// não
+																												// encontrado
+																												// - 404
+																												// Not
+																												// Found
 		}
 
 		Client client = optionalClient.get();
@@ -213,7 +224,8 @@ public class ClientController {
 			if (isValidEmail(updatedClient.getEmail())) {
 				client.setEmail(updatedClient.getEmail());
 			} else {
-				return ResponseEntity.badRequest().body("O campo 'email' não é um endereço de e-mail válido"); // 400 Request
+				return ResponseEntity.badRequest().body("O campo 'email' não é um endereço de e-mail válido"); // 400
+																												// Request
 			}
 		}
 
@@ -253,7 +265,9 @@ public class ClientController {
 				clientRepository.deleteById(id);
 				return ResponseEntity.ok("Cliente deletado com sucesso"); // Exclusão bem-sucedida - 200 OK
 			} else {
-				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente não encontrado com o ID: " + id); // 404 Not Found
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente não encontrado com o ID: " + id); // 404
+																													// Not
+																													// Found
 			}
 		} catch (Exception e) {
 			// Tratando qualquer exceção inesperada (Falta Melhorar)
